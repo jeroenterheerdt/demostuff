@@ -16,12 +16,13 @@
 			href="./favicon.png"
 		/>
 
+		<script src="https://unpkg.com/tone"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.4.3/webcomponents-bundle.js"></script>
 		<link
 			href="https://fonts.googleapis.com/css?family=Material+Icons&display=block"
 			rel="stylesheet"
 		/>
-		<script src="../build/Tone.js"></script>
+		<!--<script src="../build/Tone.js"></script>-->
 		<script src="./js/tone-ui.js"></script>
 		<script src="./js/components.js"></script>
 	</head>
@@ -32,27 +33,19 @@
 				margin-bottom: 10px;
 			}
 		</style>
-		<tone-example label="Sampler">
+		<tone-example label="Player">
 			<tone-loader></tone-loader>
-
 			<div slot="explanation">
-				<a
-					href="https://tonejs.github.io/docs/latest/classes/Sampler"
-					target="_blank"
-					>Tone.Sampler</a
-				>
-				makes it easy to create an instrument from audio samples. Pass
-				in an object which maps the note's pitch or midi value to the
-				url, then you can trigger the attack and release of that note
-				like other instruments. By automatically repitching the samples,
-				it is possible to play pitches which were not explicitly
-				included which can save loading time.
+				Turn up the volume and click the button!
 			</div>
 
-			<div id="content"></div>
+			<div id="content">
+				<tone-play-toggle></tone-play-toggle>
+			</div>
 		</tone-example>
-
 		<script type="text/javascript">
+			//heaven chord: E3, C4, D4, G4, B4
+			const heaven_chord = ["E3","C4","D4","G4","B4"];
 			const sampler = new Tone.Sampler({
 				urls: {
 					A0: "A0.mp3",
@@ -90,11 +83,21 @@
 				baseUrl: "https://tonejs.github.io/audio/salamander/",
 			}).toDestination();
 
-			piano({
+			// bind the interface
+			document
+				.querySelector("tone-play-toggle")
+				.addEventListener("start", () => sampler.triggerAttackRelease(heaven_chord[Math.floor(Math.random()*heaven_chord.length)],60));
+			/*document
+				.querySelector("tone-play-toggle")
+				.addEventListener("stop", () => sampler.triggerRelease("Eb4"));*/
+			/*Tone.loaded().then(() => {
+				sampler.triggerAttackRelease("Eb4",4);
+			});*/
+			/*piano({
 				parent: document.querySelector("#content"),
 				noteon: (note) => sampler.triggerAttack(note.name),
 				noteoff: (note) => sampler.triggerRelease(note.name),
-			});
+			});*/
 		</script>
 	</body>
 </html>
