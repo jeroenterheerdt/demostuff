@@ -33,32 +33,10 @@
 				margin-bottom: 10px;
 			}
 		</style>
-		<!--<tone-example label="Sampler">
-			<tone-loader></tone-loader>
-
-			<div slot="explanation">
-				<a
-					href="https://tonejs.github.io/docs/latest/classes/Sampler"
-					target="_blank"
-					>Tone.Sampler</a
-				>
-				makes it easy to create an instrument from audio samples. Pass
-				in an object which maps the note's pitch or midi value to the
-				url, then you can trigger the attack and release of that note
-				like other instruments. By automatically repitching the samples,
-				it is possible to play pitches which were not explicitly
-				included which can save loading time.
-			</div>
-
-			<div id="content"></div>
-		</tone-example>-->
 		<tone-example label="Player">
 			<tone-loader></tone-loader>
 			<div slot="explanation">
-				Click on the button to play the audio file on loop using
-				<a href="https://tonejs.github.io/docs/latest/classes/Player"
-					>Tone.Player</a
-				>.
+				Turn up the volume and click the button!
 			</div>
 
 			<div id="content">
@@ -107,7 +85,7 @@
 			// bind the interface
 			document
 				.querySelector("tone-play-toggle")
-				.addEventListener("start", () => sampler.triggerAttackRelease("Eb4",4));
+				.addEventListener("start", () => sampler.triggerAttackRelease("Eb4",60));
 			document
 				.querySelector("tone-play-toggle")
 				.addEventListener("stop", () => sampler.stop());
