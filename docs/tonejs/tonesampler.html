@@ -46,7 +46,8 @@
 		<script type="text/javascript">
 			//heaven chord: E3, C4, D4, G4, B4
 			const heaven_chord = ["E3","C4","D4","G4","B4"];
-			const sampler = new Tone.Sampler({
+			//original source for mp3s from tonejs which did not include all notes:
+			/*const sampler = new Tone.Sampler({
 				urls: {
 					A0: "A0.mp3",
 					C1: "C1.mp3",
@@ -81,8 +82,20 @@
 				},
 				release: 1,
 				baseUrl: "https://tonejs.github.io/audio/salamander/",
-			}).toDestination();
+			}).toDestination();*/
 
+			// my own using mp3s found online:
+			const sampler = new Tone.Sampler({
+				urls: {
+					E3: "E3.mp3",
+					C4: "C4.mp3",
+					D4: "D4.mp3",
+					G4: "G4.mp3",
+					B4: "B4.mp3",
+				},
+				release: 1,
+				baseUrl: "https://github.com/jeroenterheerdt/demostuff/raw/refs/heads/main/docs/piano-mp3/",
+			}).toDestination();
 			// bind the interface
 			document
 				.querySelector("tone-play-toggle")
