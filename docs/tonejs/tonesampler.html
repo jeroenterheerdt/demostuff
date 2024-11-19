@@ -54,6 +54,7 @@
 		</tone-example>
 
 		<script type="text/javascript">
+		
 			const sampler = new Tone.Sampler({
 				urls: {
 					A0: "A0.mp3",
@@ -91,11 +92,13 @@
 				baseUrl: "https://tonejs.github.io/audio/salamander/",
 			}).toDestination();
 
-			piano({
+			Tone.loaded().then(() => {
+				sampler.triggerAttackRelease("Eb4",4);
+			/*piano({
 				parent: document.querySelector("#content"),
 				noteon: (note) => sampler.triggerAttack(note.name),
 				noteoff: (note) => sampler.triggerRelease(note.name),
-			});
+			});*/
 		</script>
 	</body>
 </html>
