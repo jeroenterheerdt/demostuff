@@ -85,10 +85,10 @@
 			// bind the interface
 			document
 				.querySelector("tone-play-toggle")
-				.addEventListener("start", () => sampler.triggerAttackRelease("Eb4",60));
+				.addEventListener("start", () => sampler.triggerAttack("Eb4",60));
 			document
 				.querySelector("tone-play-toggle")
-				.addEventListener("stop", () => sampler.stop());
+				.addEventListener("stop", () => sampler.triggerRelease("Eb4"));
 			/*Tone.loaded().then(() => {
 				sampler.triggerAttackRelease("Eb4",4);
 			});*/
