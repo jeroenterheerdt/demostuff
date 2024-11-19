@@ -83,8 +83,8 @@
 				baseUrl: "https://tonejs.github.io/audio/salamander/",
 			}).toDestination();*/
 
-			// my own using mp3s found online:
-			const sampler = new Tone.Sampler({
+			// my own using mp3s found online (low-quality):
+			/*const sampler = new Tone.Sampler({
 				urls: {
 					E3: "E3.mp3",
 					C4: "C4.mp3",
@@ -94,6 +94,19 @@
 				},
 				release: 1,
 				baseUrl: "https://jeroenterheerdt.github.io/demostuff/piano-mp3/",
+			}).toDestination();*/
+
+			//high quality mp3s found online:
+			const sampler = new Tone.Sampler({
+				urls: {
+					E3: "19.mp3",
+					C4: "24.mp3",
+					D4: "25.mp3",
+					G4: "28.mp3",
+					B4: "30.mp3",
+				},
+				release: 1,
+				baseUrl: "https://jeroenterheerdt.github.io/demostuff/piano-mp3-HQ/",
 			}).toDestination();
 			// bind the interface
 			document
