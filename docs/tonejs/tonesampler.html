@@ -44,7 +44,8 @@
 			</div>
 		</tone-example>
 		<script type="text/javascript">
-		
+			//heaven chord: E3, C4, D4, G4, B4
+			const heaven_chord = ["E3","C4","D4","G4","B4"];
 			const sampler = new Tone.Sampler({
 				urls: {
 					A0: "A0.mp3",
@@ -85,7 +86,7 @@
 			// bind the interface
 			document
 				.querySelector("tone-play-toggle")
-				.addEventListener("start", () => sampler.triggerAttackRelease("Eb4",60));
+				.addEventListener("start", () => sampler.triggerAttackRelease(heaven_chord[Math.floor(Math.random()*heaven_chord.length)],60));
 			/*document
 				.querySelector("tone-play-toggle")
 				.addEventListener("stop", () => sampler.triggerRelease("Eb4"));*/
