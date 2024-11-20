@@ -110,11 +110,12 @@
 				release: 1,
 				baseUrl: "https://jeroenterheerdt.github.io/demostuff/piano-mp3-HQ/",
 			}).toDestination();*/
+			baseUrl = "https://jeroenterheerdt.github.io/demostuff/piano-mp3-HQ/";
 			const player = new Tone.Player({
-				url: "https://jeroenterheerdt.github.io/demostuff/piano-mp3-HQ/"+heaven_chord_nums[Math.floor(Math.random()*heaven_chord_nums.length)]+".mp3",
+				url: baseUrl+heaven_chord_nums[Math.floor(Math.random()*heaven_chord_nums.length)]+".mp3",
 				loop: true,
 			}).toDestination();
-			player.autostart = true;
+			//player.autostart = true;
 
 
 			// bind the interface
@@ -130,7 +131,10 @@
 				.addEventListener("start", () => sampler.triggerAttackRelease(heaven_chord[Math.floor(Math.random()*heaven_chord.length)],5));*/
 			document
 				.querySelector("tone-play-toggle")
-				.addEventListener("start", () => player.start());
+				.addEventListener("start", () => {
+					player.url = baseUrl+heaven_chord_nums[Math.floor(Math.random()*heaven_chord_nums.length)]+".mp3",
+					player.start()
+				});
 			document
 				.querySelector("tone-play-toggle")
 				.addEventListener("stop", () => player.stop());
