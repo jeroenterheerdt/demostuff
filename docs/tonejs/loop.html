@@ -42,6 +42,9 @@
 				<tone-play-toggle></tone-play-toggle>
 			</div>
 		</tone-example>
+		<audio>
+			<source src="/silent.mp3" type="audio/mp3"></source>
+		</audio>
 		<script type="text/javascript">
 			//heaven chord: E3, C4, D4, G4, B4
 			const heaven_chord = ["E3","C4","D4","G4","B4"];
@@ -132,8 +135,8 @@
 			document
 				.querySelector("tone-play-toggle")
 				.addEventListener("start", () => {
-					player.url = baseUrl+heaven_chord_nums[Math.floor(Math.random()*heaven_chord_nums.length)]+".mp3",
-					player.start()
+					player.url = baseUrl+heaven_chord_nums[Math.floor(Math.random()*heaven_chord_nums.length)]+".mp3";
+					player.start();
 				});
 			document
 				.querySelector("tone-play-toggle")
