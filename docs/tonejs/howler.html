@@ -11,6 +11,7 @@
 
     <!-- Button to trigger sound play -->
     <button onclick="playRandomSound()">Play</button>
+    <button onclick="stopSound()">Stop</button>
 
     <script>
         baseUrl = "https://jeroenterheerdt.github.io/demostuff/piano-mp3-HQ/";
@@ -40,10 +41,19 @@
             });*/
 
             const sound = new Howl({
-                src: target
+                src: target,
+                loop: true, // Enable looping
+                volume: 1.0  // Optionally set the volume (0.0 to 1.0)
             });
             // Play the sound
             sound.play();
+        }
+
+        // Function to stop the sound playback
+        function stopSound() {
+            if (currentSound) {
+                currentSound.stop(); // Stop the currently playing sound
+            }
         }
     </script>
 
