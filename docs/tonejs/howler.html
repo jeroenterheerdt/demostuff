@@ -14,7 +14,7 @@
     <button onclick="stopSound()">Stop</button>
     
     <script>
-        baseUrl = "https://jeroenterheerdt.github.io/demostuff/piano-mp3-HQ/";
+        baseUrl = "https://jeroenterheerdt.github.io/demostuff/tones/";
         //heaven chord: E3, C4, D4, G4, B4
 		const heaven_chord = ["E3","C4","D4","G4","B4"];
 		const heaven_chord_nums = ["20","21","30","47","51"];
@@ -41,7 +41,7 @@
                 src: [randomSound]
             });*/
             // stop any sounds that are playning first.
-            stopSound();
+            //stopSound();
             target = baseUrl+heaven_chord_nums[Math.floor(Math.random()*heaven_chord_nums.length)]+".mp3";
             sound = new Howl({
                 src: target,
