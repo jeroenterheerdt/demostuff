@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random MP3 Player</title>
+    <title>Player</title>
     <!-- Include Howler.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.1/howler.min.js"></script>
 </head>
@@ -29,6 +29,7 @@
             'sound4.mp3'
         ];*/
 
+        let sound = null;
         // Function to play a random sound
         function playRandomSound() {
             // Pick a random sound from the array
@@ -39,8 +40,10 @@
             /*const sound = new Howl({
                 src: [randomSound]
             });*/
+            // stop any sounds that are playning first.
+            stopSound();
             target = baseUrl+heaven_chord_nums[Math.floor(Math.random()*heaven_chord_nums.length)]+".mp3";
-            const sound = new Howl({
+            sound = new Howl({
                 src: target,
                 loop: true, // Enable looping
                 volume: 1.0  // Optionally set the volume (0.0 to 1.0)
