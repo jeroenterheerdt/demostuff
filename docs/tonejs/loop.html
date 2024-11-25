@@ -120,9 +120,34 @@
 			}).toDestination();
 			//player.autostart = true;
 
+			// Make sure the audio context starts after user interaction (required on iOS)
+			let audioStarted = false;
+			document.querySelector("tone-play-toggle").addEventListener("start", () => {
+				// Start the audio context after the first interaction
+				if (!audioStarted) {
+					Tone.start().then(() => {
+						console.log("Audio context started");
+						audioStarted = true;  // Ensure this only runs once
+					});
+				}
+
+				// Play the sound effect
+				const soundEffect = new Audio();
+				soundEffect.autoplay = true;
+				soundEffect.src = "data:audio/mpeg;base64,SUQzBAAAAAABEVRYWFgAAAAtAAADY29tbWVudABCaWdTb3VuZEJhbmsuY29tIC8gTGFTb25vdGhlcXVlLm9yZwBURU5DAAAAHQAAA1N3aXRjaCBQbHVzIMKpIE5DSCBTb2Z0d2FyZQBUSVQyAAAABgAAAzIyMzUAVFNTRQAAAA8AAANMYXZmNTcuODMuMTAwAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV";
+
+				// Change the player's URL and start it
+				player.url = baseUrl + heaven_chord_nums[Math.floor(Math.random() * heaven_chord_nums.length)] + ".mp3";
+				player.start();
+			});
+
+			// Stop the player when the stop event is triggered
+			document.querySelector("tone-play-toggle").addEventListener("stop", () => {
+				player.stop();
+			});
 
 			// bind the interface
-			ui({
+			/*ui({
 				tone: player,
 				parent: document.querySelector("#content"),
 			});
@@ -130,12 +155,13 @@
 			const soundEffect = new Audio();
 			soundEffect.autoplay = true;
 			soundEffect.src = "data:audio/mpeg;base64,SUQzBAAAAAABEVRYWFgAAAAtAAADY29tbWVudABCaWdTb3VuZEJhbmsuY29tIC8gTGFTb25vdGhlcXVlLm9yZwBURU5DAAAAHQAAA1N3aXRjaCBQbHVzIMKpIE5DSCBTb2Z0d2FyZQBUSVQyAAAABgAAAzIyMzUAVFNTRQAAAA8AAANMYXZmNTcuODMuMTAwAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV";
-
+			*/
 			// bind the interface
 			//sampler
 			/*document
 				.querySelector("tone-play-toggle")
 				.addEventListener("start", () => sampler.triggerAttackRelease(heaven_chord[Math.floor(Math.random()*heaven_chord.length)],5));*/
+			/*
 			document
 				.querySelector("tone-play-toggle")
 				.addEventListener("start", () => {
@@ -146,7 +172,7 @@
 			document
 				.querySelector("tone-play-toggle")
 				.addEventListener("stop", () => player.stop());
-			
+			*/
 			/*document
 				.querySelector("tone-play-toggle")
 				.addEventListener("stop", () => sampler.triggerRelease("Eb4"));*/
