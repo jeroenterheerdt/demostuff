@@ -41,12 +41,12 @@
                 src: [randomSound]
             });*/
             // stop any sounds that are playning first.
-            //stopSound();
+            stopSound();
             target = baseUrl+heaven_chord[Math.floor(Math.random()*heaven_chord.length)]+".mp3";
             sound = new Howl({
                 src: target,
                 loop: true, // Enable looping
-                volume: 1.0  // Optionally set the volume (0.0 to 1.0)
+                volume: 0.8  // Optionally set the volume (0.0 to 1.0)
             });
             // Play the sound
             sound.play();
