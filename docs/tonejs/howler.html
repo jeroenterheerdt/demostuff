@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random MP3 Player</title>
+    <!-- Include Howler.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.1/howler.min.js"></script>
+</head>
+<body>
+
+    <!-- Button to trigger sound play -->
+    <button onclick="playRandomSound()">Play</button>
+
+    <script>
+        baseUrl = "https://jeroenterheerdt.github.io/demostuff/piano-mp3-HQ/";
+        //heaven chord: E3, C4, D4, G4, B4
+		const heaven_chord = ["E3","C4","D4","G4","B4"];
+		const heaven_chord_nums = ["20","21","30","47","51"];
+        
+        //
+        target = baseUrl+heaven_chord_nums[Math.floor(Math.random()*heaven_chord_nums.length)]+".mp3";
+        // Array of MP3 file URLs
+        /*const sounds = [
+            'sound1.mp3', // Replace with actual file paths or URLs
+            'sound2.mp3',
+            'sound3.mp3',
+            'sound4.mp3'
+        ];*/
+
+        // Function to play a random sound
+        function playRandomSound() {
+            // Pick a random sound from the array
+            //const randomIndex = Math.floor(Math.random() * sounds.length);
+            //const randomSound = sounds[randomIndex];
+
+            // Create a new Howl instance to play the random sound
+            /*const sound = new Howl({
+                src: [randomSound]
+            });*/
+
+            const sound = new Howl({
+                src: target
+            });
+            // Play the sound
+            sound.play();
+        }
+    </script>
+
+</body>
+</html>
