@@ -43,7 +43,7 @@
 			</div>
 			<div>
 				Does not work? Click here to download, then open in your audio player and loop.
-				<a id="download_link">Download</a>
+				<a id="download_link" href="">Download</a>
 			</div>
 		</tone-example>
 		
@@ -117,7 +117,7 @@
 			}).toDestination();*/
 			baseUrl = "https://jeroenterheerdt.github.io/demostuff/piano-mp3-HQ/";
 			target = baseUrl+heaven_chord_nums[Math.floor(Math.random()*heaven_chord_nums.length)]+".mp3";
-			document.querySelector("download_link").href=target;
+			document.getElementById("download_link").href=target;
 			const player = new Tone.Player({
 				url: target,
 				loop: true,
